@@ -49,7 +49,6 @@ export default class App extends React.Component {
             <TextField
               componentId="searchbox"
               dataField="name"
-              categoryField="brand.raw"
               placeholder="Search for cars"
             />
             <ReactiveList
