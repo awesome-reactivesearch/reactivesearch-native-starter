@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import {
   ReactiveBase,
-  TextField,
+  DataSearch,
   ReactiveList
 } from '@appbaseio/reactivebase-native';
 
@@ -41,19 +41,24 @@ export default class App extends React.Component {
 
     return (
       <ReactiveBase
-        app="car-store"
-        credentials="cf7QByt5e:d2d60548-82a9-43cc-8b40-93cbbe75c34c"
+        app="good-books-ds"
+        credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d"
       >
         <ScrollView>
           <View style={styles.container}>
-            <TextField
+            <DataSearch
               componentId="searchbox"
-              dataField="name"
-              placeholder="Search for cars"
+              dataField={[
+                'original_title',
+                'original_title.search',
+                'authors',
+                'authors.search',
+              ]}
+              placeholder="Search for books"
             />
             <ReactiveList
               componentId="results"
-              dataField="name"
+              dataField="original_title"
               size={7}
               showResultStats={false}
               pagination={true}
@@ -62,10 +67,10 @@ export default class App extends React.Component {
               }}
               onData={(res) => (
                 <View style={styles.result}>
-                  <Image source={{ uri: 'https://bit.do/demoimg' }} style={styles.image} />
+                  <Image source={{ uri: res.image }} style={styles.image} />
                   <View style={styles.item}>
-                    <Text style={styles.title}>{res.name}</Text>
-                    <Text>{res.brand + " " + "🌟".repeat(res.rating)}</Text>
+                    <Text style={styles.title}>{res.original_title}</Text>
+                    <Text>{res.authors}</Text>
                   </View>
                 </View>
               )}
