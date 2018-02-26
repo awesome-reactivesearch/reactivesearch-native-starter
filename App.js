@@ -10,7 +10,7 @@ import {
   ReactiveBase,
   DataSearch,
   ReactiveList
-} from '@appbaseio/reactivebase-native';
+} from '@appbaseio/reactivesearch-native';
 
 export default class App extends React.Component {
   constructor() {
